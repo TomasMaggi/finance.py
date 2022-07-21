@@ -2,6 +2,8 @@
 
 A monolitic webapp based in python, flask and sqlite, consuming a iexcloud financial api, with CRUD and session system.
 
+this project is an extension of [pset9 of cs50](https://cs50.harvard.edu/x/2021/psets/9/finance/), it also uses some of the libraries provided by cs50 at the moment.
+
 ## how to install in your machine
 
 ### install require
@@ -22,14 +24,6 @@ then you need to set an environment variable in your system using the keyapi you
 
 * for windows: `set API_KEY=[key]`
 * for linux: `export API_KEY=[key]`
-
-### create the db
-
-you need a db to store the users and transactions, so run the db tool:
-
-```
-    python create_db
-```
 
 ### how to run
 

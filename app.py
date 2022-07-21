@@ -22,8 +22,12 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
+# checks for the db before start
+if not exists("finance.db"):
+    raise RuntimeError("db not created")
+
 # configure the conection with the db
-db = SQL("sqlite:///shows.db")
+db = SQL("sqlite:///finance.db")
 
 # Make sure API key is set
 if not os.environ.get("API_KEY"):
