@@ -9,9 +9,8 @@ from itertools import groupby
 from operator import itemgetter
 from cs50 import SQL
 
-
+"""render a cat img if something went wrong as apology"""
 def apology(message, code=400):
-    """Render message as an apology to user."""
     def escape(s):
         """
         Escape special characters.
@@ -38,9 +37,8 @@ def login_required(f):
         return f(*args, **kwargs)
     return decorated_function
 
-
+"""consult the api for the requested symbol and add a easy to use format"""
 def lookup(symbol):
-    """Look up quote for symbol."""
 
     # Contact API
     try:
@@ -118,12 +116,26 @@ def fillList(myList):
 
     return myList
 
+"""this is a special method for history"""
+def fill(List):
+    newList = list()
+    for item in List:
+        temp = lookup(item['symbol'])
+        item['name'] = temp['name']
+        item['price'] = temp['price']
+
+        newList.append(item)
+
+    return newList
+
+"""used by buy and sell to change the stocks of the user"""
 def getPortafolio(userID):
     db = SQL("sqlite:///finance.db")
 
     RawBuy = db.execute("SELECT id,symbol,share from transactions WHERE user_id = ? AND operation = 'BUY'",userID)
     RawSell = db.execute("SELECT id,symbol,share from transactions WHERE user_id = ? AND operation = 'SELL'",userID)
     
+    #format the outputs form the db
     normalizedList = diferenceDicts(RawBuy,RawSell)
     normalizedList = fillList(normalizedList)
 

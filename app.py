@@ -6,7 +6,7 @@ from flask_session import Session
 from tempfile import mkdtemp
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from helpers import apology, login_required, lookup, usd, getPortafolio, fillList
+from helpers import apology, login_required, lookup, usd, getPortafolio, fillList, fill
 
 # Configure application
 app = Flask(__name__)
@@ -48,6 +48,14 @@ def index():
 
     return render_template("index.html",data = portafolio,cash = cash)
 
+"""
+disclaimer
+
+if we get a POST is because the client made some change in their databse
+else is a GET and is because is loading the page
+
+if there is no method distinction, assume that we can only do GET to the url
+"""
 
 @app.route("/buy", methods=["GET", "POST"])
 @login_required
@@ -84,17 +92,6 @@ def buy():
 
     else:
         return render_template("buy.html")
-
-def fill(List):
-    newList = list()
-    for item in List:
-        temp = lookup(item['symbol'])
-        item['name'] = temp['name']
-        item['price'] = temp['price']
-
-        newList.append(item)
-
-    return newList
 
 @app.route("/history")
 @login_required
