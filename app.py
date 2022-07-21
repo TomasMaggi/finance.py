@@ -8,6 +8,8 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 from helpers import apology, login_required, lookup, usd, getPortafolio, fillList, fill
 
+from os.path import exists
+
 # Configure application
 app = Flask(__name__)
 
