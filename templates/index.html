@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    portafolio
+{% endblock %}
+
+{% block main %}
+    <table class="table">
+        <tr>
+            <td>Symbol</td>
+            <td>Name</td>
+            <td>Shares</td>
+            <td>Price</td>
+            <td>TOTAL</td>
+        </tr>
+
+        {% for item in data %}
+            {% if item['share'] != 0 %}
+                <tr>
+                    <td>{{  item['symbol']}}</td>
+                    <td>{{  item['name']}}</td>
+                    <td>{{  item['share']}}</td>
+                    <td>{{  item['price'] | usd  }}</td>
+                    <td>{{  (item['price'] * item['share']) | usd  }}</td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+        <tr>
+            <td></td>
+            <td></td>
+            <td><button class="btn btn-primary"><a href="/deposit">add more money</a></button></td>
+            <td>cash</td>
+            <td>{{cash | usd}}</td>
+        </tr>
+    </table>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    history
+{% endblock %}
+
+{% block main %}
+    <table class="table">
+        <tr>
+            <td>Symbol</td>
+            <td>Name</td>
+            <td>Shares</td>
+            <td>Operation</td>
+            <td>Date</td>
+            <td>Price</td>
+            <td>TOTAL</td>
+        </tr>
+        {% for item in data %}
+        <tr>
+            <td>{{  item['symbol']}}</td>
+            <td>{{  item['name']}}</td>
+            <td>{{  item['share']}}</td>
+            <td>{{  item['operation']  }}</td>
+            <td>{{  item['date']  }}</td>
+            <td>{{  item['price'] | usd  }}</td>
+            <td>{{  (item['price'] * item['share']) | usd  }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
