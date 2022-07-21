@@ -20,8 +20,8 @@ then you need a key to be able to consume the api, so create an account on iexcl
 
 then you need to set an environment variable in your system using the keyapi you got from the site, this depends on your operating system:
 
-for windows: set API_KEY=[key]
-for linux: export API_KEY=[key]
+* for windows: set API_KEY=[key]
+* for linux: export API_KEY=[key]
 
 ### how to run
 
