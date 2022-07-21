@@ -23,6 +23,14 @@ then you need to set an environment variable in your system using the keyapi you
 * for windows: `set API_KEY=[key]`
 * for linux: `export API_KEY=[key]`
 
+### create the db
+
+you need a db to store the users and transactions, so run the db tool:
+
+```
+    python create_db
+```
+
 ### how to run
 
 now that flask can consume the api, type in the console (in the root directory):

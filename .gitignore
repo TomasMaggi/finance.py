@@ -27,3 +27,4 @@ htmlcov/
 #proyect stuff
 api.txt
 flask_session
+finance.db
